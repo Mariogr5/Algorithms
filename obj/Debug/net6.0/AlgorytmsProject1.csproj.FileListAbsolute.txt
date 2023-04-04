@@ -1,0 +1,15 @@
+C:\Users\mario\Desktop\Strukturydanych\AlgorytmsProject1\bin\Debug\net6.0\AlgorytmsProject1.exe
+C:\Users\mario\Desktop\Strukturydanych\AlgorytmsProject1\bin\Debug\net6.0\AlgorytmsProject1.deps.json
+C:\Users\mario\Desktop\Strukturydanych\AlgorytmsProject1\bin\Debug\net6.0\AlgorytmsProject1.runtimeconfig.json
+C:\Users\mario\Desktop\Strukturydanych\AlgorytmsProject1\bin\Debug\net6.0\AlgorytmsProject1.dll
+C:\Users\mario\Desktop\Strukturydanych\AlgorytmsProject1\bin\Debug\net6.0\AlgorytmsProject1.pdb
+C:\Users\mario\Desktop\Strukturydanych\AlgorytmsProject1\obj\Debug\net6.0\AlgorytmsProject1.csproj.AssemblyReference.cache
+C:\Users\mario\Desktop\Strukturydanych\AlgorytmsProject1\obj\Debug\net6.0\AlgorytmsProject1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mario\Desktop\Strukturydanych\AlgorytmsProject1\obj\Debug\net6.0\AlgorytmsProject1.AssemblyInfoInputs.cache
+C:\Users\mario\Desktop\Strukturydanych\AlgorytmsProject1\obj\Debug\net6.0\AlgorytmsProject1.AssemblyInfo.cs
+C:\Users\mario\Desktop\Strukturydanych\AlgorytmsProject1\obj\Debug\net6.0\AlgorytmsProject1.csproj.CoreCompileInputs.cache
+C:\Users\mario\Desktop\Strukturydanych\AlgorytmsProject1\obj\Debug\net6.0\AlgorytmsProject1.dll
+C:\Users\mario\Desktop\Strukturydanych\AlgorytmsProject1\obj\Debug\net6.0\refint\AlgorytmsProject1.dll
+C:\Users\mario\Desktop\Strukturydanych\AlgorytmsProject1\obj\Debug\net6.0\AlgorytmsProject1.pdb
+C:\Users\mario\Desktop\Strukturydanych\AlgorytmsProject1\obj\Debug\net6.0\AlgorytmsProject1.genruntimeconfig.cache
+C:\Users\mario\Desktop\Strukturydanych\AlgorytmsProject1\obj\Debug\net6.0\ref\AlgorytmsProject1.dll
