@@ -1,6 +1,8 @@
-﻿using System;
+﻿using AlgorytmsProject1.Algorithms;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,66 +10,109 @@ namespace AlgorytmsProject1
 {
     public static class Sort
     {
-        public static void Quicksort(ref int[] tab, int left, int right)
+        public static void Quicksort(List<Movie> tab, int left, int right)
         {
-            //Przy pierwszym wywołaniu sortowania podajemy zerowy indeks i indeks maksymalny(rozmiar tablicy)
+            //Przy pierwszym wywołaniu sortowania podajemy zerowy indeks i indeks maksymalny(rozmiar tablicy - 1)
             int i = left;
             int j = right;
-            int srodek = tab[(left + right) / 2];
+            double srodek = tab[right].Rating;
             do
             {
-                while (tab[i] < srodek)
+                while (tab[i].Rating < srodek)
                     i++;
 
-                while (tab[j] > srodek)
+                while (tab[j].Rating > srodek)
                     j--;
 
                 if (i <= j)
                 {
-                    Swapper.Swap(ref tab[i], ref tab[j]);
+                    Swapper.Swap(tab[i], tab[j]);
                     i++;
                     j--;
                 }
             } while (i <= j);
 
+            if (right > i)
+                Quicksort(tab, i, right);
             if (left < j) 
-                Quicksort(ref tab, left, j);
-
-            if (right > i) 
-                Quicksort(ref tab, i, right);
-        }
-        //-----------------Defilementsort-------------
-        public static void Defilementsort(int[] tab, int left, int right)
-        {
-            int[] temptab = new int[right + 1];
-            DivideElements(temptab, tab, left, right);
+                Quicksort(tab, left, j);
 
         }
-        private static void DivideElements(int[] temptab, int[] tab, int left, int right)
+        //-----------------Mergesort-------------
+
+        public static void Mergesort(List<Movie> mylist, int  l, int  r)
         {
-            if (right <= left) return;
-            int srodek = (right + left) / 2;
-            DivideElements(temptab, tab, left, srodek);
-            DivideElements(temptab, tab, srodek + 1, right);
-            Together(temptab, tab, left, srodek, right);
+            if (l < r && (r - l) >= 1)
+            {
+                int mid = (r + l) / 2;
+                Mergesort(mylist, l, mid);
+                Mergesort(mylist, mid + 1, r);
+                Merge(mylist, l, mid, r);
+            }
         }
-        private static void Together(int[] temptab, int[] tab, int left, int Middle, int right)
+        public static void Merge(List<Movie> mylist, int l, int  mid, int  r)
         {
-            int i, j;
-            for (i = Middle + 1; i > left; i--)
-                temptab[i - 1] = tab[i - 1];
-            for (j = Middle; j < right; j++)
-                temptab[right + Middle - j] = tab[j + 1];
-            for(int z = left; z <= right; z ++)
-                if(temptab[j] < temptab[i])
-                    tab[z] = temptab[j--];
+            List<Movie> tempArray = new List<Movie>();
+            int getLeftIndex = l;
+            int getRightIndex = mid + 1;
+            while(getLeftIndex <= mid && getRightIndex <= r)
+            {
+                if(mylist[getLeftIndex].Rating <= mylist[getRightIndex].Rating)
+                {
+                    tempArray.Add(mylist[getLeftIndex]);
+                    getLeftIndex++;
+                }
                 else
-                    tab[z] = temptab[i++];
-        }
-        //-------------------Bagssort-----------------
-        public static void Kubeleksort(int[] tab)
-        {
+                {
+                    tempArray.Add(mylist[getRightIndex]);
+                    getRightIndex++;
+                }
+            }
 
+            while(getLeftIndex <= mid)
+            {
+                tempArray.Add(mylist[getLeftIndex]);
+                getLeftIndex++;
+            }
+
+            while(getRightIndex <= r)
+            {
+                tempArray.Add(mylist[getRightIndex]);
+                getRightIndex++;
+            }
+
+            for (int i = 0; i < tempArray.Count(); l++)
+            {
+                mylist[l] = tempArray[i++];
+            }
+        }
+        //-------------------Bucketsort-----------------
+        public static void Bucketsort(List<Movie> mylist)
+        {
+            double numberofbuckets = 5;
+            double p = 10.0 / numberofbuckets;
+            List<List<Movie>> Buckets = new List<List<Movie>>();
+
+            for(int i = 0; i < numberofbuckets; i++)
+            {
+                Buckets.Add(new List<Movie>());
+            }
+            foreach(var mymovie in mylist)
+            {
+                Buckets[(int)(mymovie.Rating / p)].Add(mymovie);
+            }
+            for (int i = 0; i < numberofbuckets; i++)
+            {
+                if (Buckets[i].Count > 1)
+                {
+                    Quicksort(Buckets[i], 0, Buckets[i].Count - 1);
+                }
+            }
+            mylist.Clear();
+            for (int j = 0; j < numberofbuckets; j++)
+            {
+                mylist.AddRange(Buckets[j]);
+            }
         }
     }
 }
